@@ -20,10 +20,11 @@ export const loginCheck = async (req, res) => {
       const token = jwt.sign({
         id: user._id,
         name: user.name,
+        role: user.role,
         location: user.location
       },process.env.JWT_secret_key,{expiresIn: '1h'});
       
-    res.status(200).send({message: "Login successful",token: token});}}
+    res.status(200).send({message: "Login successful",token: token,role: user.role});}}
   } catch (err) {
     res.status(500).send(err);
   }
