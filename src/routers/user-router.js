@@ -10,7 +10,6 @@ import { verifyJWT } from "../utils/verifyJWT.js";
 export const userRouter = express.Router();
 
 userRouter.post("/", createUser);
-userRouter.get("/", getUsers);
 userRouter.post("/check", checkEmail);
 userRouter.post("/login", loginCheck);
 userRouter.put("/",verifyJWT, editUser);
