@@ -6,10 +6,12 @@ import { loginCheck } from "../controllers/users/login_check.js";
 import { editUser } from "../controllers/users/put.js";
 import { findUser } from "../controllers/users/findByID.js";
 import { verifyJWT } from "../utils/verifyJWT.js";
+import { verifyAdmin } from "../utils/verifyAdmin.js";
 
 export const userRouter = express.Router();
 
 userRouter.post("/", createUser);
+userRouter.get("/",verifyJWT,verifyAdmin, getUsers);
 userRouter.post("/check", checkEmail);
 userRouter.post("/login", loginCheck);
 userRouter.put("/",verifyJWT, editUser);
